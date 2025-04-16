@@ -122,7 +122,7 @@ April 07 2025
 
 # DNABERTを用いたCRISPR/Cas9のオフターゲット予測
 
-このコードは以下の論文に基づいて開発：
+本コードは以下の論文にて開発：
 [Improved CRISPR/Cas9 Off-target Prediction with DNABERT and Epigenetic Features](https://www.biorxiv.org)
 
 
@@ -188,9 +188,9 @@ April 07 2025
 ## 使い方
 
 ### 1. DNABERTのミスマッチ予測タスクでのファインチューニング
-DNABERTをミスマッチ予測タスク用にファインチューニング、以下のコマンドを実行：
+DNABERTをミスマッチ予測タスク用にファインチューニング。：
 ```bash
-python3 script/dnabert_pair_ft.py
+python3 script/dnabert_pair_ft.py --pretrain
 ```
 
 ### 2. オフターゲット効果予測タスクにおける訓練とテスト
@@ -208,7 +208,7 @@ python3 main.py -f 0 -e 0 -d guideseq -m dnabert --train
 - `--test`: このフラグを含めると、モデルのテストが実行される。
 
 ### 3. 複数のモデルの結果をまとめて表示
-複数のモデルの結果を表示するには、以下のコマンドを例として使用する：
+複数のモデルの結果を表示する。コマンド実行例：
 ```bash
 python3 result.py -f 0,1,2,3,4,5,6,7,8,9 -e 0,1,2,3,4 -d guideseq -m gru-embed,crispr-bert,crispr-hw,crispr-dipoff,crispr-bert-2025,dnabert,dnabert-epi --ensemble --excel
 ```
