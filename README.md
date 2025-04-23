@@ -2,7 +2,7 @@
 # DNABERT for CRISPR/Cas9 off-target
 
 This code is developed for: 
-[Improved CRISPR/Cas9 Off-target Prediction with DNABERT and Epigenetic Features](https://www.biorxiv.org)
+[Improved CRISPR/Cas9 Off-target Prediction with DNABERT and Epigenetic Features](https://www.biorxiv.org/content/10.1101/2025.04.16.649101v1)
 
 
 ## Requirements
@@ -69,7 +69,7 @@ The following operations need to be performed as part of the prerequisites:
 ### 1. Fine-tuning DNABERT for Mismatch Prediction Task
 To fine-tune DNABERT for the mismatch prediction task, run the following command:
 ```bash
-python3 script/dnabert_pair_ft.py
+python3 script/dnabert_pair_ft.py --pretrain
 ```
 
 ### 2. Training and Testing for Off-target Effect Prediction Task
@@ -123,7 +123,7 @@ April 07 2025
 # DNABERTを用いたCRISPR/Cas9のオフターゲット予測
 
 本コードは以下の論文にて開発：
-[Improved CRISPR/Cas9 Off-target Prediction with DNABERT and Epigenetic Features](https://www.biorxiv.org)
+[Improved CRISPR/Cas9 Off-target Prediction with DNABERT and Epigenetic Features](https://www.biorxiv.org/content/10.1101/2025.04.16.649101v1)
 
 
 ## 環境
