@@ -366,7 +366,7 @@ class CrisprDnaBertEpigeneticClass(CrisprDnaBertClass):
         self.prob_thres_test = 0.05
         self.epochs = 5
         self.batch_size = 256
-        self.learning_rate = 2e-5
+        self.learning_rate = 1e-4
         self.n_estimators = 5
         
         # Prepare path information
@@ -609,13 +609,12 @@ class CrisprDnaBertEpigeneticClass(CrisprDnaBertClass):
         # Get test predict from fine-tuned DNABERT model
         test_true_label_np, test_predicted_probabilities = super().test_classification_task()
         
-        # if not os.path.exists(self.probabilitiy_array_path_):
-        if True:
+        if not os.path.exists(self.probabilitiy_array_path_):
             # Print confusion matrix
             print(f"Confusion matrix for test dataset.")
             # Get predicted labels
             test_predicted_labels_ = np.argmax(test_predicted_probabilities, axis=1)
-            self.print_confusion_matrix(test_true_label_np, test_predicted_labels_)
+            # self.print_confusion_matrix(test_true_label_np, test_predicted_labels_)
             test_predicted_labels = (test_predicted_probabilities[:, 1] >= self.prob_thres_test).astype(int)
             # self.print_confusion_matrix(test_true_label_np, test_predicted_labels)
 
@@ -665,16 +664,13 @@ class CrisprDnaBertEpigeneticClass(CrisprDnaBertClass):
 
             # Average ensemble
             test_predicted_probabilities__ = bagging_probabilities / self.n_estimators
-            print(len(test_predicted_probabilities__))
-            print(test_predicted_probabilities__[:10])
             
             # Majority voting
             test_positive_predicted_index = [i for i, label in enumerate(test_predicted_labels) if label == 1]
             test_predicted_probabilities[test_positive_predicted_index, :] = test_predicted_probabilities__*0.5 + test_predicted_probabilities[test_positive_predicted_index, :]*0.5
-            # test_predicted_probabilities[test_positive_predicted_index, :] = test_predicted_probabilities__
 
             # Print confusion matrix
-            self.print_confusion_matrix(test_true_label_np, np.argmax(test_predicted_probabilities, axis=1))
+            # self.print_confusion_matrix(test_true_label_np, np.argmax(test_predicted_probabilities, axis=1))
 
             # Save probabilities
             np.save(self.probabilitiy_array_path_, test_predicted_probabilities)
