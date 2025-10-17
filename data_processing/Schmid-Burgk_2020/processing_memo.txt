@@ -1,0 +1,27 @@
+# TTISS analysis
+
+- SRA RUN search page
+page(https://www.ncbi.nlm.nih.gov/sra/?term=PRJNA602092)
+
+- SRA list
+page(https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP242700&o=acc_s%3Aa)
+
+- Pool1_SpCas9_replicate1
+SRR10913630(https://trace.ncbi.nlm.nih.gov/Traces/index.html?view=run_browser&acc=SRR10913630&display=metadata)
+
+- Pool2_SpCas9_replicate1
+SRR10913628(https://trace.ncbi.nlm.nih.gov/Traces/index.html?view=run_browser&acc=SRR10913628&display=metadata)
+
+- Pool1_SpCas9_replicate2
+SRR10913611(https://trace.ncbi.nlm.nih.gov/Traces/index.html?view=run_browser&acc=SRR10913611&display=metadata)
+
+- Pool2_SpCas9_replicate2
+SRR10913619(https://trace.ncbi.nlm.nih.gov/Traces/index.html?view=run_browser&acc=SRR10913619&display=metadata)
+
+SRA download
+```bash
+fasterq-dump --outdir /mnt/e/database/1_crispr_off_on_target_2025/Schmid-Burgk_2020/SRA/SRR10913611 --split-files SRR10913611
+fasterq-dump --outdir /mnt/e/database/1_crispr_off_on_target_2025/Schmid-Burgk_2020/SRA/SRR10913619/ --split-files SRR10913619
+fasterq-dump --outdir /mnt/e/database/1_crispr_off_on_target_2025/Schmid-Burgk_2020/SRA/SRR10913628 --split-files SRR10913628
+fasterq-dump --outdir /mnt/e/database/1_crispr_off_on_target_2025/Schmid-Burgk_2020/SRA/SRR10913630/ --split-files SRR10913630
+```

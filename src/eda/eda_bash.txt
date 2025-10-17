@@ -1,0 +1,38 @@
+> awk -F',' '$11>0' /mnt/e/database/1_crispr_off_on_target_2025/Yaish_2024/datasets/FullGUIDEseq/include_on_targets/FullGUIDEseq_CR_Lazzarotto_2020_dataset.csv | cut -f 9 -d "," | sort | uniq -c | sort -nr | head
+    769 4
+    621 3
+    287 5
+    275 2
+     83 0
+     70 1
+     61 6
+> cat /mnt/e/database/1_crispr_off_on_target_2025/Yaish_2024/datasets/FullGUIDEseq/include_on_targets/FullGUIDEseq_CR_Lazzarotto_2020_dataset.csv | cut -f 9 -d "," | sort | uniq -c | sort -nr | head
+1829265 6
+1104269 4
+ 235532 5
+  95490 3
+   6139 2
+    270 1
+     84 0
+> wc -l
+3271050 /mnt/e/database/1_crispr_off_on_target_2025/Yaish_2024/datasets/FullGUIDEseq/include_on_targets/FullGUIDEseq_CR_Lazzarotto_2020_dataset.csv
+
+> awk -F',' '$11>0' /mnt/e/database/1_crispr_off_on_target_2025/Schmid-Burgk_2020/SchmidBurgk_2020_TTISS.csv | cut -f 9 -d "," | sort | uniq -c | sort -nr | head
+    515 4
+    333 6
+    209 3
+    163 5
+     94 2
+     59 0
+      8 1
+> cat /mnt/e/database/1_crispr_off_on_target_2025/Schmid-Burgk_2020/SchmidBurgk_2020_TTISS.csv | cut -f 9 -d "," | sort | uniq -c | sort -nr | head
+ 918290 6
+ 396417 4
+ 172375 5
+  29518 3
+   1683 2
+     60 0
+     51 1
+> wc -l
+1518395 /mnt/e/database/1_crispr_off_on_target_2025/Schmid-Burgk_2020/SchmidBurgk_2020_TTISS.csv
+

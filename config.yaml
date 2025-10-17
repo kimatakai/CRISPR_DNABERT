@@ -1,0 +1,140 @@
+
+
+paths:
+  working_dir: "/CRISPR_DNABERT"
+  database_dir: "/data"
+
+  # Feference genome
+  reference_genome:
+    hg38: "/reference/hg38.fa"
+    
+  # Off-target dataset
+  off_target_dataset:
+    Lazzarotto_2020_CHANGE_seq:
+      sgrna_list: "/Yaish_2024/datasets/CHANGEseq_sgRNAs_list.csv"
+      sgrna_split_list: "/Yaish_2024/datasets/CHANGEseq_sgRNAs_folds_split.csv"
+      dataset: "/Yaish_2024/datasets/CHANGEseq/include_on_targets/CHANGEseq_CR_Lazzarotto_2020_dataset.csv"
+
+    Lazzarotto_2020_GUIDE_seq:
+      sgrna_list: "/Yaish_2024/datasets/FullGUIDEseq_sgRNAs_list.csv"
+      sgrna_list_old: "/Yaish_2024/datasets/GUIDEseq_sgRNAs_list.csv"
+      sgrna_list_new: "/Yaish_2024/datasets/NewGUIDEseq_sgRNAs_list.csv"
+      sgrna_split_list: "/Yaish_2024/datasets/GUIDEseq_sgRNAs_folds_split.csv"
+      dataset: "/Yaish_2024/datasets/FullGUIDEseq/include_on_targets/FullGUIDEseq_CR_Lazzarotto_2020_dataset.csv"
+
+    Tsai_2015_GUIDE_seq_1:
+      sgrna_list: "/Yaish_2024/datasets/Tsai_2015_GUIDE_seq_1_sgRNAs_list.csv"
+      dataset: "/Yaish_2024/datasets/Tsai_2015_GUIDE_seq.csv"
+
+    Tsai_2015_GUIDE_seq_2:
+      sgrna_list: "/Yaish_2024/datasets/Tsai_2015_GUIDE_seq_2_sgRNAs_list.csv"
+      dataset: "/Yaish_2024/datasets/Tsai_2015_GUIDE_seq.csv"
+
+    Chen_2017_GUIDE_seq:
+      dataset: "/Yaish_2024/datasets/Chen_2017_GUIDE_seq.csv"
+
+    Listgarten_2018_GUIDE_seq:
+      dataset: "/Yaish_2024/datasets/Listgarten_2018_GUIDE_seq.csv"
+
+    SchmidBurgk_2020_TTISS:
+      sgrna_list: "/Schmid-Burgk_2020/sgrna_list.csv"
+      dataset: "/Schmid-Burgk_2020/SchmidBurgk_2020_TTISS.csv"
+  
+  # Input data
+  input:
+    Lazzarotto_2020_CHANGE_seq: "/input/Lazzarotto_2020_CHANGE_seq"
+    Lazzarotto_2020_GUIDE_seq: "/input/Lazzarotto_2020_GUIDE_seq"
+    Tsai_2015_GUIDE_seq_1: "/input/Tsai_2015_GUIDE_seq_1"
+    Tsai_2015_GUIDE_seq_2: "/input/Tsai_2015_GUIDE_seq_2"
+    Chen_2017_GUIDE_seq: "/input/Chen_2017_GUIDE_seq"
+    Listgarten_2018_GUIDE_seq: "/input/Listgarten_2018_GUIDE_seq"
+    SchmidBurgk_2020_TTISS: "/input/SchmidBurgk_2020_TTISS"
+
+  # Epigenetic data
+  epigenetic:
+    base_dir: "/epigenetic"
+    atac:
+      base_dir: "/atac"
+      bigwig:
+        Lazzarotto_2020_GUIDE_seq: ["/GSM4498611_T-cell_ATAC_FE.bdg.bw"]
+      npz:
+        Lazzarotto_2020_GUIDE_seq: ["/GSM4498611_T-cell_ATAC_FE.bdg.npz"]
+    h3k4me3:
+      base_dir: "/h3k4me3"
+      bigwig:
+        Lazzarotto_2020_GUIDE_seq: ["/GSM4495703_H3K4me3_FE.bdg.bw"]
+      npz:
+        Lazzarotto_2020_GUIDE_seq: ["/GSM4495703_H3K4me3_FE.bdg.npz"]
+    h3k27ac:
+      base_dir: "/h3k27ac"
+      bigwig:
+        Lazzarotto_2020_GUIDE_seq: ["/GSM4495711_H3K27ac_FE.bdg.bw"]
+      npz:
+        Lazzarotto_2020_GUIDE_seq: ["/GSM4495711_H3K27ac_FE.bdg.npz"]
+
+  # Deep learning model path
+  model:
+    DNABERT:
+      base_dir: "/models/dnabert"
+      pretrained: "/pretrained"
+      pair_finetuned: "/pair_finetuned"
+      pair_finetuned_no_pretrain: "/pair_finetuned_no_pretrain"
+    GRU-Embed:
+      base_dir: "/models/gru_embed"
+    CRISPR-BERT:
+      base_dir: "/models/crispr_bert_2024"
+      base_model: "/uncased_L-2_H-256_A-4"
+    CRISPR-HW:
+      base_dir: "/models/CRISPR-HW"
+    CRISPR-DIPOFF:
+      base_dir: "/models/CRISPR-DIPOFF"
+    CrisprBERT:
+      base_dir: "/models/crispr_bert_2025"
+  
+  # Results
+  results:
+    base_dir: "/results"
+    figure: "/figures"
+    shap: "/shap"
+  
+  # Execute time
+  time:
+    base_dir: "/time"
+    
+  supplementary:
+    base_dir: "/supplementary"
+  
+  # Probability
+  probability:
+    base_dir: "/probability"
+
+
+parameters:
+  max_pairseq_len: 24
+
+  # For epigenetic data
+  window_size:
+    atac: 500
+    h3k4me3: 500
+    h3k27ac: 500
+  bin_size:
+    atac: 10
+    h3k4me3: 10
+    h3k27ac: 10
+
+colors:
+  TN: "#1f77b4" # Blue
+  FP: "#ff7f0e" # Orange
+  FN: "#2ca02c" # Green
+  TP: "#d62728" # Red
+  Ensemble: "#addd8e"
+  GRU-Embed: "#fec44f"
+  CRISPR-BERT: "#1F62A6"
+  CRISPR-HW: "#AECBE6"
+  CRISPR-DIPOFF: "#BD342F"
+  CrisprBERT: "#FC9272"
+  DNABERT: "#bebebe"
+  DNABERT-Epi: "#cc99ff"
+  atac: "#1f77b4"
+  h3k4me3: "#ff7f0e"
+  h3k27ac: "#2ca02c"
