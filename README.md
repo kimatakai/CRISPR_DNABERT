@@ -2,7 +2,7 @@
 # DNABERT for CRISPR/Cas9 off-target
 
 This code is developed for: 
-[Improved CRISPR/Cas9 Off-target Prediction with DNABERT and Epigenetic Features (Preprint)](https://www.biorxiv.org/content/10.1101/2025.04.16.649101v1)\
+[Improved CRISPR/Cas9 Off-target Prediction with DNABERT and Epigenetic Features (Preprint)](https://www.biorxiv.org/content/10.1101/2025.04.16.649101v1)
 * This version of the code includes updates and improvements made during the journal revision process.
 
 
@@ -219,4 +219,5 @@ python3 src/run_model.py --model DNABERT --dataset_in_cellula Lazzarotto_2020_GU
 ```bash
 python3 src/run_result.py --models GRU-Embed,CRISPR-BERT,CRISPR-HW,CRISPR-DIPOFF,CrisprBERT,DNABERT --dataset Lazzarotto_2020_GUIDE_seq --folds 0,1,2,3,4,5,6,7,8,9,10,11,12,13 --iters 0,1,2,3,4 --exe_type transfer --include_epi_transfer
 ```
+
 
